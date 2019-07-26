@@ -5,7 +5,7 @@
 	"license": "GNU/GPL",
 	"projectName": "PhocaCarouselModule",
 	"extensionName": "Phoca Carousel Module",
-	"projectInitials" : "PCM",				  
+	"projectInitials" : "CR",				  
 	"description": "Phoca Carousel Module - a Joomla! CMS module which displays horizontal image slider containing HTML parts and additional images.",
 	"projectUrl": "https://www.phoca.cz/phoca-carousel-module",
 	"projectDocumentationUrl": "https://www.phoca.cz/documentation/",
