@@ -1,0 +1,17 @@
+{
+	"author": "Jan Pavelka (www.phoca.cz)",
+	"authorUrl": "https://www.phoca.cz",
+	"copyright": "Jan Pavelka",
+	"license": "GNU/GPL",
+	"projectName": "PhocaCarouselModule",
+	"extensionName": "Phoca Carousel Module",
+	"projectInitials" : "PCM",				  
+	"description": "Phoca Carousel Module - a Joomla! CMS module which displays horizontal image slider containing HTML parts and additional images.",
+	"projectUrl": "https://www.phoca.cz/phoca-carousel-module",
+	"projectDocumentationUrl": "https://www.phoca.cz/documentation/",
+	"projectDemo" : {
+		"Joomla! - Phoca Cart Demo": "https://www.phoca.cz/phocacartdemo/",
+		"Joomla! - Phoca Cart - Phoca Premiere Template Demo": "https://www.phoca.cz/phocacartdemo/astroid/"
+	},
+	"projectColor": "#C14641"
+}

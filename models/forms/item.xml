@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+
+		<field name="item_background_image" type="media" default="" label="MOD_PHOCACAROUSEL_FIELD_ITEM_BACKGROUND_IMAGE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_BACKGROUND_IMAGE_DESC"/>
+
+		<field name="item_background_image_animation" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ITEM_BACKGROUND_IMAGE_ANIMATION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_BACKGROUND_IMAGE_ANIMATION_DESC"/>
+
+
+		<field name="item_title" default=""  filter="safehtml" label="MOD_PHOCACAROUSEL_FIELD_ITEM_TITLE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_TITLE_DESC"/>
+
+		<field name="item_title_css" default="" type="textarea" label="MOD_PHOCACAROUSEL_FIELD_ITEM_TITLE_CSS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_TITLE_CSS_DESC"/>
+
+		<field name="item_title_animation" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ITEM_TITLE_ANIMATION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_TITLE_ANIMATION_DESC"/>
+
+
+		<field name="item_description" default="" type="textarea" filter="safehtml" label="MOD_PHOCACAROUSEL_FIELD_ITEM_DESCRIPTION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_DESCRIPTION_DESC"/>
+
+		<field name="item_description_css" default="" type="textarea" label="MOD_PHOCACAROUSEL_FIELD_ITEM_DESCRIPTION_CSS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_DESCRIPTION_CSS_DESC"/>
+
+		<field name="item_description_animation" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ITEM_DESCRIPTION_ANIMATION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_DESCRIPTION_ANIMATION_DESC"/>
+
+
+		<field name="item_button_title" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ITEM_BUTTON_TITLE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_BUTTON_TITLE_DESC"/>
+
+		<field name="item_button_link" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ITEM_BUTTON_LINK_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_BUTTON_LINK_DESC"/>
+
+		<field name="item_button_css" default="" type="textarea" label="MOD_PHOCACAROUSEL_FIELD_ITEM_BUTTON_CSS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_BUTTON_CSS_DESC"/>
+
+		<field name="item_button_animation" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ITEM_BUTTON_ANIMATION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_BUTTON_ANIMATION_DESC"/>
+
+
+		<field name="item_image1" type="media" default="" label="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE1_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE1_DESC"/>
+
+		<field name="item_image1_css" default="" type="textarea" label="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE1_CSS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE1_CSS_DESC"/>
+
+		<field name="item_image1_size_css" default="" type="textarea" label="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE1_SIZE_CSS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE1_SIZE_CSS_DESC"/>
+
+		<field name="item_image1_animation" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE1_ANIMATION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE1_ANIMATION_DESC"/>
+
+
+		<field name="item_image2" type="media" default="" label="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE2_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE2_DESC"/>
+
+		<field name="item_image2_css" default="" type="textarea" label="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE2_CSS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE2_CSS_DESC"/>
+
+		<field name="item_image2_size_css" default="" type="textarea" label="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE2_SIZE_CSS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE2_SIZE_CSS_DESC"/>
+
+		<field name="item_image2_animation" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE2_ANIMATION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_IMAGE2_ANIMATION_DESC"/>
+
+
+	</fieldset>
+</form>

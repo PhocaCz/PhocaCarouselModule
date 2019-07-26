@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade" version="3">
+	<name>mod_phocacarousel</name>
+	<author>Jan Pavelka (www.phoca.cz)</author>
+	<creationDate>26/07/2019</creationDate>
+	<authorEmail></authorEmail>
+	<authorUrl>https://www.phoca.cz</authorUrl>
+	<copyright>Jan Pavelka</copyright>
+	<license>GNU/GPL</license>
+	<version>3.0.0</version>
+	<description>MOD_PHOCACAROUSEL_DESCRIPTION</description>
+	<projectName>PhocaCarouselModule</projectName>
+
+	<media destination="mod_phocacarousel" folder="media">
+		<folder>css</folder>
+		<folder>js</folder>
+		<filename>index.html</filename>
+	</media>
+
+	<files>
+		<folder>models</folder>
+		<folder>tmpl</folder>
+		<filename module="mod_phocacarousel">index.html</filename>
+		<filename module="mod_phocacarousel">mod_phocacarousel.php</filename>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_phocacarousel.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_phocacarousel.sys.ini</language>
+	</languages>
+	
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_phocacarousel/models/fields">
+			<fieldset name="basic">
+
+				<field name="animation_speed" default="600" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ANIMATION_SPEED_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ANIMATION_SPEED_DESC"/>
+
+				<field name="autoplay" type="list" default="1" label="MOD_PHOCACAROUSEL_FIELD_AUTOPLAY_LABEL" description="MOD_PHOCACAROUSEL_FIELD_AUTOPLAY_DESC">
+                <option value="1">MOD_PHOCACAROUSEL_YES</option>
+                <option value="0">MOD_PHOCACAROUSEL_NO</option>
+            </field>
+
+				<field name="autoplay_speed" default="1000" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_AUTOPLAY_SPEED_LABEL" description="MOD_PHOCACAROUSEL_FIELD_AUTOPLAY_SPEED_DESC"/>
+
+				<field name="nav" type="list" default="1" label="MOD_PHOCACAROUSEL_FIELD_PREV_NEXT_LABEL" description="MOD_PHOCACAROUSEL_FIELD_PREV_NEXT_DESC">
+                <option value="1">MOD_PHOCACAROUSEL_YES</option>
+                <option value="0">MOD_PHOCACAROUSEL_NO</option>
+            </field>
+
+				<field name="dots" type="list" default="1" label="MOD_PHOCACAROUSEL_FIELD_DOTS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DOTS_DESC">
+                <option value="1">MOD_PHOCACAROUSEL_YES</option>
+                <option value="0">MOD_PHOCACAROUSEL_NO</option>
+            </field>
+
+				<field name="height" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_HEIGHT_LABEL" description="MOD_PHOCACAROUSEL_FIELD_HEIGHT_DESC"/>
+
+				<field name="fill_rest_page" type="list" default="1" label="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_DESC">
+                <option value="1">MOD_PHOCACAROUSEL_YES</option>
+                <option value="0">MOD_PHOCACAROUSEL_NO</option>
+            </field>
+
+				<field name="fill_rest_page_small" default="2" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_SMALL_SCREENS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_SMALL_SCREENS_DESC"/>
+
+				<field name="background_image" type="media" default="" label="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_DESC"/>
+
+				<field name="display_option" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_COMPONENT_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_COMPONENT_DESC"/>
+
+                <field name="display_view" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_VIEW_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_VIEW_DESC"/>
+		</fieldset>
+		
+		
+
+			<fieldset name="items" label="MOD_PHOCACAROUSEL_FIELDSET_ITEMS_LABEL">
+
+
+				<field name="items" type="subform" label="MOD_PHOCACAROUSEL_FIELD_ITEMS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEMS_DESC" multiple="true" layout="joomla.form.field.subform.repeatable" formsource="modules/mod_phocacarousel/models/forms/item.xml"/>
+
+
+			</fieldset>
+
+			<fieldset name="advanced">
+
+			</fieldset>
+		</fields>
+	</config>
+
+	<updateservers>
+		<server type="extension" name="MOD_PHOCACAROUSEL" priority="1"><![CDATA[https://raw.githubusercontent.com/PhocaCz/PhocaCarouselModule/master/manifest.xml]]></server>
+	</updateservers>
+</extension>
