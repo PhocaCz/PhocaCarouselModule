@@ -46,13 +46,13 @@ Phoca Carousel Module - a Joomla! CMS module which displays horizontal image sli
 
 [Joomla! - Phoca Cart Demo](https://www.phoca.cz/phocacartdemo/)
 
-[Joomla! - Phoca Cart - Phoca Premiere Template Demo](https://www.phoca.cz/phocacartdemo/astroid/)
+[Joomla! - Phoca Cart - Astroid Template Demo](https://www.phoca.cz/phocacartdemo/astroid/)
 
 
 
 ## Version
 
-3.0.0
+3.0.1
 
 
 

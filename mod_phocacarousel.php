@@ -22,6 +22,7 @@ $p['height'] 	            = $params->get( 'height', '');
 $p['fill_rest_page'] 	    = $params->get( 'fill_rest_page', 1);
 $p['fill_rest_page_ratio'] 	= $params->get( 'fill_rest_page_ratio', '2');
 $p['background_image'] 		= $params->get( 'background_image', '');
+$p['background_video'] 		= $params->get( 'background_video', '');
 $p['display_view'] 			= $params->get( 'display_view', '');
 $p['display_option'] 		= $params->get( 'display_option', '');
 $view 						= $app->input->get('view', '');
@@ -54,7 +55,7 @@ JHTML::stylesheet( 'media/mod_phocacarousel/css/style.css' );
 
 $path = array();
 $path['image'] = JUri::base();// . '/';
-
+$path['media'] = JUri::base();
 
 $id = 'phoca-carousel-'.rand ( 10000 , 99999 );
 
@@ -67,12 +68,13 @@ if (!empty($items)) {
 
         if (isset($v->item_background_image) && $v->item_background_image != '') {
 
-            $s[] = '#'.$id.' .ph-swiper-slide-box-'.$i.' {';
-            $s[] = '    position:relative;';
-            $s[] = '    overflow: hidden;';
-            $s[] = '}';
+            //$s[] = '#'.$id.' .ph-swiper-slide-box-'.$i.' {';
+            //$s[] = '    position:relative;';
+            //$s[] = '    overflow: hidden;';
+            //$s[] = '}';
 
-            $s[] = '#'.$id.' .ph-swiper-slide-box-bg-'.$i.' {';
+            //$s[] = '#'.$id.' .ph-swiper-slide-box-bg-'.$i.' {';
+			$s[] = '#'.$id.' .ph-swiper-slide-box-'.$i.' {';
             $s[] = '    background-image:url('.$path['image'].$v->item_background_image.');';
             $s[] = '    -webkit-background-size: cover;';
             $s[] = '    background-size: cover;';
@@ -142,6 +144,17 @@ if (!empty($items)) {
         $s[] = '    background-image:url(' . $path['image'] . $p['background_image'] . ');';
     }
     $s[] = '}';
+
+	
+	$s[] = '#'.$id.' .ph-video-bg {';
+	$s[] = '    position: absolute;';
+	$s[] = '    width: 100%;';
+	$s[] = '    object-fit: cover;';
+	$s[] = '    right: 0;';
+	$s[] = '    left: 0;';
+	$s[] = '    overflow: hidden;';
+	$s[] = '}';
+	
 
 
 }
@@ -222,6 +235,7 @@ if($p['fill_rest_page'] == 1) {
     }
     $js[] = '   }';
     $js[] = '   jQuery(".swiper-container.ph-module-swiper-container").height(phRestPageHeight);';
+	$js[] = '   jQuery(".ph-video-bg").height(phRestPageHeight);';
 }
 
 /* Start animation of items when transition of slide ends*/

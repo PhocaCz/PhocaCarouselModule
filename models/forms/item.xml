@@ -4,6 +4,7 @@
 
 		<field name="item_background_image" type="media" default="" label="MOD_PHOCACAROUSEL_FIELD_ITEM_BACKGROUND_IMAGE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_BACKGROUND_IMAGE_DESC"/>
 
+
 		<field name="item_background_image_animation" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_ITEM_BACKGROUND_IMAGE_ANIMATION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_ITEM_BACKGROUND_IMAGE_ANIMATION_DESC"/>
 
 

@@ -12,6 +12,12 @@ defined('_JEXEC') or die('Restricted access');
 
 ?>
 <div class="" id="<?php echo $id ?>">
+
+<?php if ($p['background_image'] == '' && $p['background_video'] != '') { ?>
+	<video autoplay muted loop id="ModPhocaCarouselVideo" class="ph-video-bg">
+		<source src="<?php echo $path['media'] . $p['background_video'] ?>" type="video/mp4">
+	</video>
+<?php } ?>
   <div class="swiper-container ph-module-swiper-container">
     <div class="parallax-bg" data-swiper-parallax="-23%"></div>
     <div class="swiper-wrapper">
