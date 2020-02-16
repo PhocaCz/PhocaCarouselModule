@@ -25,6 +25,7 @@ $p['background_image'] 		= $params->get( 'background_image', '');
 $p['background_video'] 		= $params->get( 'background_video', '');
 $p['display_view'] 			= $params->get( 'display_view', '');
 $p['display_option'] 		= $params->get( 'display_option', '');
+$p['display_min_width'] 	= $params->get( 'display_min_width', 0);
 $view 						= $app->input->get('view', '');
 $option 					= $app->input->get('option', '');
 
@@ -57,7 +58,9 @@ $path = array();
 $path['image'] = JUri::base();// . '/';
 $path['media'] = JUri::base();
 
-$id = 'phoca-carousel-'.rand ( 10000 , 99999 );
+$rand = rand ( 10000 , 99999 );
+$id = 'phoca-carousel-'.$rand;
+$idJs = 'pS'.$rand;
 
 $s = array();
 // STYLE
@@ -124,7 +127,7 @@ if (!empty($items)) {
     $s[] = '#'.$id.' .swiper-container.ph-module-swiper-container {';
     $s[] = '    width: 100%;';
     if ($p['fill_rest_page'] == 0) {
-        $s[] = '    height: '.$height.';';
+        $s[] = '    height: '.$p['height'].';';
     }
     $s[] = '    background: transparent;';
     $s[] = '}';
@@ -198,8 +201,21 @@ $js[] = '   	a = phReset(a);';
 $js[] = '   	a.addClass(aClass);';
 $js[] = '   }';
 
-$js[] = '   var swiper = new Swiper(".ph-module-swiper-container", {';
-$js[] = '   	speed: '.(int)$p['animation_speed'].',';
+
+
+$js[] = '   var swiper'.$idJs.' = Swiper;';
+$js[] = '   var init'.$idJs.' = false;';
+
+$js[] = '   function phSwiperMode'.$idJs.'() {';
+$js[] = '      var minWidth = window.matchMedia(\'(min-width: '.(int)$p['display_min_width'].'px)\');';
+
+$js[] = '     if(minWidth.matches) {';
+$js[] = '        if (!init'.$idJs.') {';
+$js[] = '           init'.$idJs.' = true;';
+$js[] = '           jQuery("#'.$id.' .swiper-container").show();';
+			
+$js[] = '   		swiper'.$idJs.' = new Swiper(".ph-module-swiper-container", {';
+$js[] = '   			speed: '.(int)$p['animation_speed'].',';
 if ($p['autoplay'] == 1){
     $js[] = '       autoplay: { delay: '.(int)$p['autoplay_speed'].' },';
 } else {
@@ -218,15 +234,25 @@ if ($p['nav'] == 1){
     $js[] = '     	    prevEl: ".swiper-button-prev",';
     $js[] = '     	},';
 }
-$js[] = '   });';
+$js[] = '   		});';
 
 
-if($p['fill_rest_page'] == 1) {
+if($p['fill_rest_page'] > 0) {
     //$js[] = '   var phSwiperTop 		= jQuery(".swiper-container").position().top;';
     $js[] = '   var phSwiperTop 		= jQuery("#'.$id.'").offset().top;';
     $js[] = '   var phSwiperWidth		= jQuery(".swiper-container").width();';
     $js[] = '   var phWindowHeight		= jQuery(window).height();';
-    $js[] = '   var phRestPageHeight	= phWindowHeight - phSwiperTop;';
+	
+	$js[] = '   var phWindowHeightRatio	= 1;';
+	if($p['fill_rest_page'] == 2) {
+		$js[] = '   var phWindowHeightRatio	= 0.5';
+	} else if ($p['fill_rest_page'] == 3) {
+		$js[] = '   var phWindowHeightRatio	= 0.67';
+	} else if ($p['fill_rest_page'] == 4) {
+		$js[] = '   var phWindowHeightRatio	= 0.75';
+	}
+	
+    $js[] = '   var phRestPageHeight	= (phWindowHeight - phSwiperTop) * phWindowHeightRatio;';
     $js[] = '   if (phSwiperWidth < phRestPageHeight) {';
     if ($p['fill_rest_page_ratio'] > 0) {
         $js[] = '       phRestPageHeight = phSwiperWidth/'.$p['fill_rest_page_ratio'].';';
@@ -239,7 +265,7 @@ if($p['fill_rest_page'] == 1) {
 }
 
 /* Start animation of items when transition of slide ends*/
-$js[] = '   swiper.on("transitionEnd", function () {';
+$js[] = '   swiper'.$idJs.'.on("transitionEnd", function () {';
 if (!empty($items)) {
     $i = 0;
     foreach ($items as $k => $v) {
@@ -253,7 +279,7 @@ if (!empty($items)) {
 }
 $js[] = '   });';
 
-$js[] = '   swiper.on("transitionStart", function () {';
+$js[] = '   swiper'.$idJs.'.on("transitionStart", function () {';
 if (!empty($items)) {
     $i = 0;
     foreach ($items as $k => $v) {
@@ -262,9 +288,6 @@ if (!empty($items)) {
     }
 }
 $js[] = '   });';
-
-
-
 
 /* Start animation of items at start of slideshow */
 if (!empty($items)) {
@@ -284,7 +307,36 @@ if (!empty($items)) {
 }
 
 
-$js[] = '   });';
+$js[] = '        }';// end Init
+$js[] = '     } else {'; // end minWidth.matches
+
+$js[] = '        if(typeof swiper'.$idJs.' !== \'undefined\' && typeof swiper'.$idJs.'.destroy === \'function\'){';
+$js[] = '           swiper'.$idJs.'.destroy();';
+$js[] = '           swiper'.$idJs.' = undefined;';
+$js[] = '        }';
+$js[] = '        jQuery("#'.$id.' .swiper-container").hide();';
+$js[] = '        init'.$idJs.' = false;';
+$js[] = '     }';// end minWidth.matches
+
+$js[] = '  }';// end phSwiperMode
+
+
+$js[] = '  window.addEventListener(\'load\', function() {';
+$js[] = '      phSwiperMode'.$idJs.'();';
+$js[] = '  });';
+
+$js[] = '  window.addEventListener(\'resize\', function() {';
+$js[] = '      phSwiperMode'.$idJs.'();';
+$js[] = '  });';
+
+// Disable on small screen, disable when the width is smaller than
+//if ((int)$p['hide_small_displays'] > 0) {
+//	$js[] = '  } else {';
+//	$js[] = '  	  jQuery(".swiper-container").hide();';	
+//	$js[] = '  }';
+//}
+
+$js[] = '   });';// document ready
 
 
 $document->addScriptDeclaration(implode("\n", $js));

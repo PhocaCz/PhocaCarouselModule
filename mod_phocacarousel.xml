@@ -2,12 +2,12 @@
 <extension type="module" client="site" method="upgrade" version="3">
 	<name>mod_phocacarousel</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>24/10/2019</creationDate>
+	<creationDate>15/02/2020</creationDate>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
 	<license>GNU/GPL</license>
-	<version>3.0.1</version>
+	<version>3.0.2</version>
 	<description>MOD_PHOCACAROUSEL_DESCRIPTION</description>
 	<projectName>PhocaCarouselModule</projectName>
 
@@ -56,11 +56,16 @@
 
 				<field name="fill_rest_page" type="list" default="1" label="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_DESC">
                 <option value="1">MOD_PHOCACAROUSEL_YES</option>
+				<option value="2">MOD_PHOCACAROUSEL_YES_50</option>
+				<option value="3">MOD_PHOCACAROUSEL_YES_67</option>
+				<option value="4">MOD_PHOCACAROUSEL_YES_75</option>
                 <option value="0">MOD_PHOCACAROUSEL_NO</option>
             </field>
 
 				<field name="fill_rest_page_small" default="2" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_SMALL_SCREENS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_SMALL_SCREENS_DESC"/>
 
+				<field name="display_min_width" type="text" default="0" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_MIN_WIDTH_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_MIN_WIDTH_DESC"/>
+           
 				<field name="background_image" type="media" default="" label="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_DESC"/>
 				
 				<field name="background_video" type="text" default="" label="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_VIDEO_LABEL" description="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_VIDEO_DESC"/>
