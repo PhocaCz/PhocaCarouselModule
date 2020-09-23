@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" client="site" method="upgrade" version="3">
+<extension type="module" client="site" method="upgrade" version="3.9">
 	<name>mod_phocacarousel</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>15/02/2020</creationDate>
+	<creationDate>23/09/2020</creationDate>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
 	<license>GNU/GPL</license>
-	<version>3.0.2</version>
+	<version>3.0.3</version>
 	<description>MOD_PHOCACAROUSEL_DESCRIPTION</description>
 	<projectName>PhocaCarouselModule</projectName>
 
@@ -73,6 +73,8 @@
 				<field name="display_option" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_COMPONENT_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_COMPONENT_DESC"/>
 
                 <field name="display_view" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_VIEW_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_VIEW_DESC"/>
+		
+			<field name="display_id" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_ID_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_ID_DESC"/>
 		</fieldset>
 		
 		

@@ -3492,3 +3492,20 @@
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp;
 }
+
+@keyframes kenburnsBottomLeft {
+  0% {
+    transform: scale(1) translate(0, 0);
+    transform-origin: 16% 84%;
+  }
+  100% {
+    transform: scale(1.25) translate(-20px, 15px);
+    transform-origin: left bottom;
+  }
+}
+
+.kenburnsBottomLeft {
+ /* -webkit-animation-name: kenburnsBottomLeft;
+  animation-name: kenburnsBottomLeft;*/
+  animation: kenburnsBottomLeft 8s ease-out both
+}							   

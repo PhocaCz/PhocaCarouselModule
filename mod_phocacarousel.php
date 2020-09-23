@@ -25,23 +25,29 @@ $p['background_image'] 		= $params->get( 'background_image', '');
 $p['background_video'] 		= $params->get( 'background_video', '');
 $p['display_view'] 			= $params->get( 'display_view', '');
 $p['display_option'] 		= $params->get( 'display_option', '');
+$p['display_id'] 			= $params->get( 'display_id', '');
 $p['display_min_width'] 	= $params->get( 'display_min_width', 0);
 $view 						= $app->input->get('view', '');
 $option 					= $app->input->get('option', '');
+$idCom						= $app->input->get('id', '');
 
 $optionA 	= array_map('trim', explode(',', $p['display_option']));// Remove spaces
 $viewA 		= array_map('trim', explode(',', $p['display_view']));
+$idA 		= array_map('trim', explode(',', $p['display_id']));
 $optionA	= array_filter($optionA);// Remove empty values from array
 $viewA 		= array_filter($viewA);
+$idA 		= array_filter($idA);
 
 
 
-if (empty($optionA) && empty($viewA)) {
-	// OK - both parameters are not set
-} else if (!empty($optionA) && in_array($option, $optionA) && empty($viewA)) {
+if (empty($optionA) && empty($viewA) && empty($idA)) {
+	// OK - all parameters are not set
+} else if (!empty($optionA) && in_array($option, $optionA) && empty($viewA) && empty($idA)) {
 	// OK - only option is set and it meets the criteria
-} else if (!empty($optionA) && in_array($option, $optionA) && !empty($viewA) && in_array($view, $viewA) ) {
+} else if (!empty($optionA) && in_array($option, $optionA) && !empty($viewA) && in_array($view, $viewA) && empty($idA)) {
 	// OK - option and view is set and it meets the criteria
+} else if (!empty($optionA) && in_array($option, $optionA) && !empty($viewA) && in_array($view, $viewA) && !empty($idA) && in_array($idCom, $idA) ) {
+	// OK - option and view and ID is set and it meets the criteria
 } else {
 	return '';
 }
@@ -76,8 +82,8 @@ if (!empty($items)) {
             //$s[] = '    overflow: hidden;';
             //$s[] = '}';
 
-            //$s[] = '#'.$id.' .ph-swiper-slide-box-bg-'.$i.' {';
-			$s[] = '#'.$id.' .ph-swiper-slide-box-'.$i.' {';
+            //$s[] = '#'.$id.' .ph-swiper-slide-box-'.$i.' {';
+			$s[] = '#'.$id.' .ph-swiper-slide-box-bg-'.$i.' {';
             $s[] = '    background-image:url('.$path['image'].$v->item_background_image.');';
             $s[] = '    -webkit-background-size: cover;';
             $s[] = '    background-size: cover;';
@@ -156,6 +162,9 @@ if (!empty($items)) {
 	$s[] = '    right: 0;';
 	$s[] = '    left: 0;';
 	$s[] = '    overflow: hidden;';
+	if ($p['fill_rest_page'] == 0) {
+        $s[] = '    height: '.$p['height'].';';
+    }
 	$s[] = '}';
 	
 
@@ -195,7 +204,7 @@ $js[] = '       n.hide();';
 $js[] = '   }';
 
 $js[] = '   function phStartAnimationBackground(item, aClass) {';
-$js[] = '   	var a = jQuery(".swiper-slide-active "+item);';
+$js[] = '   	var a = jQuery(".swiper-slide-active " + item);';
 $js[] = '   	a.removeClass(aClass);';
 $js[] = '   	a = phReset(a);';
 $js[] = '   	a.addClass(aClass);';

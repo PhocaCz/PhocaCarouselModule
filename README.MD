@@ -24,6 +24,8 @@ Phoca Carousel Module - a Joomla! CMS module which displays horizontal image sli
 
 
 
+
+
 ## Support
 
 [Phoca Forum](https://www.phoca.cz/forum)
@@ -52,7 +54,7 @@ Phoca Carousel Module - a Joomla! CMS module which displays horizontal image sli
 
 ## Version
 
-3.0.2
+3.0.3
 
 
 
