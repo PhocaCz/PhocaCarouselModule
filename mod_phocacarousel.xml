@@ -2,12 +2,12 @@
 <extension type="module" client="site" method="upgrade" version="3.9">
 	<name>mod_phocacarousel</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>23/09/2020</creationDate>
+	<creationDate>07/11/2020</creationDate>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
 	<license>GNU/GPL</license>
-	<version>3.0.3</version>
+	<version>3.0.4</version>
 	<description>MOD_PHOCACAROUSEL_DESCRIPTION</description>
 	<projectName>PhocaCarouselModule</projectName>
 
@@ -67,6 +67,8 @@
 				<field name="display_min_width" type="text" default="0" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_MIN_WIDTH_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_MIN_WIDTH_DESC"/>
            
 				<field name="background_image" type="media" default="" label="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_DESC"/>
+				
+				<field name="background_image_position" type="text" default="center" label="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_POSITION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_POSITION_DESC"/>
 				
 				<field name="background_video" type="text" default="" label="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_VIDEO_LABEL" description="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_VIDEO_DESC"/>
 

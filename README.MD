@@ -2,7 +2,7 @@
 
 
 
-![Phoca Carousel Module](https://github.com/PhocaCz/PhocaCarouselModule/blob/master/mod_phocacarousel.png)
+![Phoca Carousel Module](https://github.com/PhocaCz/PhocaCarouselModule/blob/master/mod_phocacarousel.png?raw=true)
 
 # Phoca Carousel Module
 
@@ -54,7 +54,7 @@ Phoca Carousel Module - a Joomla! CMS module which displays horizontal image sli
 
 ## Version
 
-3.0.3
+3.0.4
 
 
 

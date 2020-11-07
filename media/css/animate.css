@@ -3493,6 +3493,7 @@
   animation-name: slideOutUp;
 }
 
+/* KenBurns Effect */
 @keyframes kenburnsBottomLeft {
   0% {
     transform: scale(1) translate(0, 0);
@@ -3504,8 +3505,10 @@
   }
 }
 
-.kenburnsBottomLeft {
+/* Active slide needs to be selected because of possible conflicts between slides */
+.swiper-slide-active .kenburnsBottomLeft {
  /* -webkit-animation-name: kenburnsBottomLeft;
   animation-name: kenburnsBottomLeft;*/
-  animation: kenburnsBottomLeft 8s ease-out both
-}							   
+  animation: kenburnsBottomLeft 8s ease-out both;
+
+}
