@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" client="site" method="upgrade" version="3.9">
+<extension type="module" client="site" method="upgrade" version="4.0">
 	<name>mod_phocacarousel</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>07/11/2020</creationDate>
+	<creationDate>04/10/2021</creationDate>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
 	<license>GNU/GPL</license>
-	<version>3.0.4</version>
+	<version>4.0.0</version>
 	<description>MOD_PHOCACAROUSEL_DESCRIPTION</description>
 	<projectName>PhocaCarouselModule</projectName>
 
@@ -18,10 +18,11 @@
 	</media>
 
 	<files>
-		<folder>models</folder>
 		<folder>tmpl</folder>
-		<filename module="mod_phocacarousel">index.html</filename>
+		<folder>models</folder>
 		<filename module="mod_phocacarousel">mod_phocacarousel.php</filename>
+		<filename module="mod_phocacarousel">index.html</filename>
+		<filename module="mod_phocacarousel">manifest.xml</filename>
 	</files>
 
 	<languages>
