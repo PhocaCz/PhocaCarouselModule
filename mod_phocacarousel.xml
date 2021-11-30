@@ -2,7 +2,7 @@
 <extension type="module" client="site" method="upgrade" version="4.0">
 	<name>mod_phocacarousel</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>04/10/2021</creationDate>
+	<creationDate>30/11/2021</creationDate>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
@@ -20,9 +20,8 @@
 	<files>
 		<folder>tmpl</folder>
 		<folder>models</folder>
-		<filename module="mod_phocacarousel">mod_phocacarousel.php</filename>
 		<filename module="mod_phocacarousel">index.html</filename>
-		<filename module="mod_phocacarousel">manifest.xml</filename>
+		<filename module="mod_phocacarousel">mod_phocacarousel.php</filename>
 	</files>
 
 	<languages>
