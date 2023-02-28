@@ -197,7 +197,7 @@ HTMLHelper::_('jquery.framework', false);
 if ($p['load_swiper_library'] == 1) {
     $wa->registerAndUseStyle('mod_phocacarousel.animate-css', 'media/mod_phocacarousel/css/animate.min.css', array('version' => 'auto'));
     $wa->registerAndUseStyle('mod_phocacarousel.swiper-css', 'media/mod_phocacarousel/css/swiper.min.css', array('version' => 'auto'));
-    $wa->registerAndUseScript('mod_phocacarousel.swiper-js', 'media/mod_phocacarousel/js/swiper.min.js', array('version' => 'auto'));
+    $wa->registerAndUseScript('mod_phocacarousel.swiper-js', 'media/mod_phocacarousel/js/swiper.min.js', array('version' => 'auto'), ['defer' => true]);
 }
 //$wa->registerAndUseStyle('mod_phocacarousel.style-css', 'media/mod_phocacarousel/css/style.css', array('version' => 'auto'));
 
@@ -235,7 +235,7 @@ $js[] = '   	a.addClass(aClass);';
 $js[] = '   }';
 
 
-$js[] = '   var swiper'.$idJs.' = Swiper;';
+//$js[] = '   var swiper'.$idJs.' = Swiper;';
 $js[] = '   var init'.$idJs.' = false;';
 
 $js[] = '   function phSwiperMode'.$idJs.'() {';
@@ -382,7 +382,8 @@ $js[] = '   });';// document ready/window load
 //$js[] = '   });';// document ready/window load
 
 
-$document->addScriptDeclaration(implode("\n", $js));
+//$document->addScriptDeclaration(implode("\n", $js));
+$wa->addInlineScript(implode("\n", $js), ['version' => 'auto'], ['type' => 'module']);//, ['defer' => true]
 
 require ModuleHelper::getLayoutPath('mod_phocacarousel', $params->get('layout', 'default'));
 ?>
