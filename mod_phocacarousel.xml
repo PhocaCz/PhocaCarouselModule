@@ -2,12 +2,12 @@
 <extension type="module" client="site" method="upgrade" version="4.0">
 	<name>mod_phocacarousel</name>
 	<author>Jan Pavelka (www.phoca.cz)</author>
-	<creationDate>04/12/2021</creationDate>
+	<creationDate>28/02/2023</creationDate>
 	<authorEmail></authorEmail>
 	<authorUrl>https://www.phoca.cz</authorUrl>
 	<copyright>Jan Pavelka</copyright>
 	<license>GNU/GPL</license>
-	<version>4.0.1</version>
+	<version>4.1.0</version>
 	<description>MOD_PHOCACAROUSEL_DESCRIPTION</description>
 	<projectName>PhocaCarouselModule</projectName>
 
@@ -66,21 +66,26 @@
 				<field name="fill_rest_page_small" default="2" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_SMALL_SCREENS_LABEL" description="MOD_PHOCACAROUSEL_FIELD_FILL_REST_PAGE_SMALL_SCREENS_DESC"/>
 
 				<field name="display_min_width" type="text" default="0" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_MIN_WIDTH_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_MIN_WIDTH_DESC"/>
-           
+
 				<field name="background_image" type="media" default="" label="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_LABEL" description="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_DESC"/>
-				
+
 				<field name="background_image_position" type="text" default="center" label="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_POSITION_LABEL" description="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_IMAGE_POSITION_DESC"/>
-				
+
 				<field name="background_video" type="text" default="" label="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_VIDEO_LABEL" description="MOD_PHOCACAROUSEL_FIELD_BACKGROUND_VIDEO_DESC"/>
 
 				<field name="display_option" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_COMPONENT_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_COMPONENT_DESC"/>
 
                 <field name="display_view" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_VIEW_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_VIEW_DESC"/>
-		
+
 			<field name="display_id" default="" size="10" type="text" label="MOD_PHOCACAROUSEL_FIELD_DISPLAY_ID_LABEL" description="MOD_PHOCACAROUSEL_FIELD_DISPLAY_ID_DESC"/>
+
+				<field name="load_swiper_library" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_PHOCACAROUSEL_FIELD_LOAD_SWIPER_LIBRARY_LABEL" description="MOD_PHOCACAROUSEL_FIELD_LOAD_SWIPER_LIBRARY_DESC">
+	<option value="1">MOD_PHOCACAROUSEL_YES</option>
+	<option value="0">MOD_PHOCACAROUSEL_NO</option>
+</field>
 		</fieldset>
-		
-		
+
+
 
 			<fieldset name="items" label="MOD_PHOCACAROUSEL_FIELDSET_ITEMS_LABEL">
 

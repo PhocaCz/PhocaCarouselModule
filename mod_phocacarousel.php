@@ -8,10 +8,19 @@
  * @copyright Copyright (C) Jan Pavelka www.phoca.cz
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License version 2 or later;
  */
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ModuleHelper;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Uri\Uri;
+
 defined('_JEXEC') or die('Restricted access');// no direct access
 
-$app 						= JFactory::getApplication();
-$document 					= JFactory::getDocument();
+$app 						= Factory::getApplication();
+$document 					= Factory::getDocument();
+$wa                         = $app->getDocument()->getWebAssetManager();
+
+
 $p 							= array();
 $p['animation_speed'] 	    = $params->get( 'animation_speed', 600);
 $p['autoplay'] 	            = $params->get( 'autoplay', 1);
@@ -27,6 +36,7 @@ $p['display_view'] 			= $params->get( 'display_view', '');
 $p['display_option'] 		= $params->get( 'display_option', '');
 $p['display_id'] 			= $params->get( 'display_id', '');
 $p['display_min_width'] 	= $params->get( 'display_min_width', 0);
+$p['load_swiper_library']	= $params->get( 'load_swiper_library', 1 );
 $p['background_image_position'] 	= $params->get( 'background_image_position', 'center');
 $view 						= $app->input->get('view', '');
 $option 					= $app->input->get('option', '');
@@ -57,17 +67,21 @@ if (empty($optionA) && empty($viewA) && empty($idA)) {
 $items = (array)$params->get('items');
 
 
-JHTML::stylesheet( 'media/mod_phocacarousel/css/animate.min.css' );
-JHTML::stylesheet( 'media/mod_phocacarousel/css/swiper.min.css' );
-JHTML::stylesheet( 'media/mod_phocacarousel/css/style.css' );
+
 
 $path = array();
-$path['image'] = JUri::base();// . '/';
-$path['media'] = JUri::base();
+$path['image'] = Uri::base();// . '/';
+$path['media'] = Uri::base();
 
-$rand = rand ( 10000 , 99999 );
+/*$rand = rand ( 10000 , 99999 );
 $id = 'ph-mod-phoca-carousel-'.$rand;
-$idJs = 'pS'.$rand;
+$idJs = 'pS'.$rand;*/
+
+$moduleclass_sfx 			= htmlspecialchars((string)$params->get('moduleclass_sfx', ''), ENT_COMPAT, 'UTF-8');
+
+$id = 'phPhocaCarouselModule'.$module->id;
+$uniqueId = 'phPhocaCarouselModuleSwiperContainer'.$module->id;
+$idJs = 'phPhocaCarouselSwiper'.$module->id;
 
 $s = array();
 // STYLE
@@ -131,7 +145,7 @@ if (!empty($items)) {
         $i++;
     }
 
-    $s[] = '#'.$id.' .swiper-container.ph-module-swiper-container {';
+    $s[] = '#'.$id.' .swiper-container.'.$uniqueId.' .swiper {';
     $s[] = '    width: 100%;';
     if ($p['fill_rest_page'] == 0) {
         $s[] = '    height: '.$p['height'].';';
@@ -155,7 +169,7 @@ if (!empty($items)) {
     }
     $s[] = '}';
 
-	
+
 	$s[] = '#'.$id.' .ph-video-bg {';
 	$s[] = '    position: absolute;';
 	$s[] = '    width: 100%;';
@@ -167,16 +181,25 @@ if (!empty($items)) {
         $s[] = '    height: '.$p['height'].';';
     }
 	$s[] = '}';
-	
+
 
 
 }
 
 $document->addCustomTag( "\n<style type=\"text/css\">\n\n" . implode("\n", $s) ."\n</style>\n\n");
 
-JHtml::_('jquery.framework', false);
+HTMLHelper::_('jquery.framework', false);
+//$document->addScript(Uri::root(true) . '/media/mod_phocacarousel/js/swiper.min.js');
+//JHTML::stylesheet( 'media/mod_phocacarousel/css/animate.min.css' );
+//JHTML::stylesheet( 'media/mod_phocacarousel/css/swiper.min.css' );
+//JHTML::stylesheet( 'media/mod_phocacarousel/css/style.css' );
 
-$document->addScript(JURI::root(true) . '/media/mod_phocacarousel/js/swiper.min.js');
+if ($p['load_swiper_library'] == 1) {
+    $wa->registerAndUseStyle('mod_phocacarousel.animate-css', 'media/mod_phocacarousel/css/animate.min.css', array('version' => 'auto'));
+    $wa->registerAndUseStyle('mod_phocacarousel.swiper-css', 'media/mod_phocacarousel/css/swiper.min.css', array('version' => 'auto'));
+    $wa->registerAndUseScript('mod_phocacarousel.swiper-js', 'media/mod_phocacarousel/js/swiper.min.js', array('version' => 'auto'));
+}
+//$wa->registerAndUseStyle('mod_phocacarousel.style-css', 'media/mod_phocacarousel/css/style.css', array('version' => 'auto'));
 
 
 $js = array();
@@ -212,7 +235,6 @@ $js[] = '   	a.addClass(aClass);';
 $js[] = '   }';
 
 
-
 $js[] = '   var swiper'.$idJs.' = Swiper;';
 $js[] = '   var init'.$idJs.' = false;';
 
@@ -222,9 +244,9 @@ $js[] = '      var minWidth = window.matchMedia(\'(min-width: '.(int)$p['display
 $js[] = '     if(minWidth.matches) {';
 $js[] = '        if (!init'.$idJs.') {';
 $js[] = '           init'.$idJs.' = true;';
-$js[] = '           jQuery("#'.$id.' .swiper-container").show();';
-			
-$js[] = '   		swiper'.$idJs.' = new Swiper(".ph-module-swiper-container", {';
+$js[] = '           jQuery("#'.$id.' .swiper-container.'.$uniqueId.' .swiper").show();';
+
+$js[] = '   		const swiper'.$idJs.' = new Swiper(jQuery(".'.$uniqueId.' .swiper")[0], {';
 $js[] = '   			speed: '.(int)$p['animation_speed'].',';
 if ($p['autoplay'] == 1){
     $js[] = '       autoplay: { delay: '.(int)$p['autoplay_speed'].' },';
@@ -248,11 +270,11 @@ $js[] = '   		});';
 
 
 if($p['fill_rest_page'] > 0) {
-    //$js[] = '   var phSwiperTop 		= jQuery(".swiper-container").position().top;';
+    //$js[] = '   var phSwiperTop 		= jQuery(".swiper-container.'.$uniqueId.' .swiper").position().top;';
     $js[] = '   var phSwiperTop 		= jQuery("#'.$id.'").offset().top;';
-    $js[] = '   var phSwiperWidth		= jQuery(".swiper-container").width();';
+    $js[] = '   var phSwiperWidth		= jQuery(".swiper-container.'.$uniqueId.' .swiper").width();';
     $js[] = '   var phWindowHeight		= jQuery(window).height();';
-	
+
 	$js[] = '   var phWindowHeightRatio	= 1;';
 	if($p['fill_rest_page'] == 2) {
 		$js[] = '   var phWindowHeightRatio	= 0.5';
@@ -261,7 +283,7 @@ if($p['fill_rest_page'] > 0) {
 	} else if ($p['fill_rest_page'] == 4) {
 		$js[] = '   var phWindowHeightRatio	= 0.75';
 	}
-	
+
     $js[] = '   var phRestPageHeight	= (phWindowHeight - phSwiperTop) * phWindowHeightRatio;';
     $js[] = '   if (phSwiperWidth < phRestPageHeight) {';
     if ($p['fill_rest_page_ratio'] > 0) {
@@ -270,7 +292,7 @@ if($p['fill_rest_page'] > 0) {
         $js[] = '       phRestPageHeight = phSwiperWidth;';
     }
     $js[] = '   }';
-    $js[] = '   jQuery(".swiper-container.ph-module-swiper-container").height(phRestPageHeight);';
+    $js[] = '   jQuery(".swiper-container.'.$uniqueId.' .swiper").height(phRestPageHeight);';
 	$js[] = '   jQuery(".ph-video-bg").height(phRestPageHeight);';
 }
 
@@ -324,7 +346,7 @@ $js[] = '        if(typeof swiper'.$idJs.' !== \'undefined\' && typeof swiper'.$
 $js[] = '           swiper'.$idJs.'.destroy();';
 $js[] = '           swiper'.$idJs.' = undefined;';
 $js[] = '        }';
-$js[] = '        jQuery("#'.$id.' .swiper-container").hide();';
+$js[] = '        jQuery("#'.$id.' .swiper-container.'.$uniqueId.' .swiper").hide();';
 $js[] = '        init'.$idJs.' = false;';
 $js[] = '     }';// end minWidth.matches
 
@@ -343,7 +365,7 @@ $js[] = '  });';
 // Disable on small screen, disable when the width is smaller than
 //if ((int)$p['hide_small_displays'] > 0) {
 //	$js[] = '  } else {';
-//	$js[] = '  	  jQuery(".swiper-container").hide();';	
+//	$js[] = '  	  jQuery(".swiper-container.'.$uniqueId.' .swiper").hide();';
 //	$js[] = '  }';
 //}
 
@@ -357,10 +379,10 @@ $js[] = '      phSwiperMode' . $idJs . '();';
 $js[] = '   });';// document ready/window load
 
 //$js[] = ' jQuery( document ).ready(function() {';
-//$js[] = '   });';// document ready/window load	
+//$js[] = '   });';// document ready/window load
 
 
 $document->addScriptDeclaration(implode("\n", $js));
 
-require(JModuleHelper::getLayoutPath('mod_phocacarousel'));
+require ModuleHelper::getLayoutPath('mod_phocacarousel', $params->get('layout', 'default'));
 ?>
