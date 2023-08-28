@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <updates>
 	<update>
 		<name><![CDATA[ Phoca Carousel Module ]]></name>
@@ -23,18 +24,19 @@
 		<description><![CDATA[ Phoca Carousel Module - a Joomla! CMS module which displays horizontal image slider containing HTML parts and additional images. ]]></description>
 		<element>mod_phocacarousel</element>
 		<type>module</type>
-		<version>4.0.1</version>
-		<infourl title="Phoca Carousel Module 4.0.1">https://www.phoca.cz/</infourl>
+		<version>4.1.2</version>
+		<infourl title="Phoca Carousel Module 4.1.2">https://www.phoca.cz/</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/PhocaCz/PhocaCarouselModule/releases/download/4.0.1/mod_phocacarousel_v4.0.1.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/PhocaCz/PhocaCarouselModule/releases/download/4.1.2/mod_phocacarousel_v4.1.2.zip</downloadurl>
 		</downloads>
+		<sha512>e9c92033d49f05d0578b5652611e2c3c4c448e907208e06ee384ae07002e366f577cbd0313f9244ebf98012c6af57828c663b4c3ca42f3e444d718c8ab41b88b</sha512>
 		<tags>
 			<tag>stable</tag>
 		</tags>
 		<maintainer><![CDATA[ Phoca.cz ]]></maintainer>
 		<maintainerurl>https://www.phoca.cz/</maintainerurl>
 		<section>Updates</section>
-		<targetplatform name="joomla" version="4.[0]"/>
+		<targetplatform name="joomla" version="4\.*"/>
 		<client>site</client>
 	</update>
 </updates>

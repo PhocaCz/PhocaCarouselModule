@@ -37,7 +37,25 @@ $p['display_option'] 		= $params->get( 'display_option', '');
 $p['display_id'] 			= $params->get( 'display_id', '');
 $p['display_min_width'] 	= $params->get( 'display_min_width', 0);
 $p['load_swiper_library']	= $params->get( 'load_swiper_library', 1 );
+$p['load_animate_library']	= $params->get( 'load_animate_library', 1 );
 $p['background_image_position'] 	= $params->get( 'background_image_position', 'center');
+
+$p['transition_effect']                = $params->get( 'transition_effect', 'slide');// slide, fade, flip, cube, coverFlow
+$p['effect_options']        = '';
+if ($p['transition_effect'] == 'slide') {
+    $p['effect_options']        = '';
+} else if ($p['transition_effect'] == 'fade') {
+    $p['effect_options']        = 'fadeEffect: {crossFade: true}';
+} else if ($p['transition_effect'] == 'flip') {
+    $p['effect_options']        = 'flipEffect: {slideShadows: false}';
+} else if ($p['transition_effect'] == 'cube') {
+    $p['effect_options']        = 'flipEffect: {slideShadows: false}';
+}
+ else if ($p['transition_effect'] == 'coverFlow') {
+    $p['effect_options']        = 'coverflowEffect: {rotate: 30, slideShadows: false}';
+
+}
+
 $view 						= $app->input->get('view', '');
 $option 					= $app->input->get('option', '');
 $idCom						= $app->input->get('id', '');
@@ -194,8 +212,10 @@ HTMLHelper::_('jquery.framework', false);
 //JHTML::stylesheet( 'media/mod_phocacarousel/css/swiper.min.css' );
 //JHTML::stylesheet( 'media/mod_phocacarousel/css/style.css' );
 
-if ($p['load_swiper_library'] == 1) {
+if ($p['load_animate_library'] == 1) {
     $wa->registerAndUseStyle('mod_phocacarousel.animate-css', 'media/mod_phocacarousel/css/animate.min.css', array('version' => 'auto'));
+}
+if ($p['load_swiper_library'] == 1) {
     $wa->registerAndUseStyle('mod_phocacarousel.swiper-css', 'media/mod_phocacarousel/css/swiper.min.css', array('version' => 'auto'));
     $wa->registerAndUseScript('mod_phocacarousel.swiper-js', 'media/mod_phocacarousel/js/swiper.min.js', array('version' => 'auto'), ['defer' => true]);
 }
@@ -248,6 +268,14 @@ $js[] = '           jQuery("#'.$id.' .swiper-container.'.$uniqueId.' .swiper").s
 
 $js[] = '   		const swiper'.$idJs.' = new Swiper(jQuery(".'.$uniqueId.' .swiper")[0], {';
 $js[] = '   			speed: '.(int)$p['animation_speed'].',';
+
+
+
+$js[] = '   			effect: \''.$p['transition_effect'].'\',';
+if ($p['effect_options'] != '') {
+    $js[] = '   			'.$p['effect_options'].',';
+}
+
 if ($p['autoplay'] == 1){
     $js[] = '       autoplay: { delay: '.(int)$p['autoplay_speed'].' },';
 } else {

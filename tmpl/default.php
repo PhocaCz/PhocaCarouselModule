@@ -11,7 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 ?>
-<div class="" id="<?php echo $id ?>">
+<div id="<?php echo $id ?>" class="ph-carousel-module-box <?php echo $moduleclass_sfx ;?>">
 
     <?php if ($p['background_image'] == '' && $p['background_video'] != '') { ?>
         <video autoplay muted loop id="ModPhocaCarouselVideo" class="ph-video-bg">
